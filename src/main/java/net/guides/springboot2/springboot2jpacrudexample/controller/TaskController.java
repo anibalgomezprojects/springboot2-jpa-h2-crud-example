@@ -27,17 +27,17 @@ public class TaskController {
 	private TaskRepository taskRepository;
 
 	@GetMapping("/")
-	public List<Task> getAllEmployees() {
+	public List<Task> getAllTask() {
 		return taskRepository.findAll();
 	}
 
 	@PostMapping("/")
-	public Task createEmployee(@Valid @RequestBody Task t) {
+	public Task createTask(@Valid @RequestBody Task t) {
 		return taskRepository.save(t);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Task> updateEmployee(@PathVariable(value = "id") Long id,
+	public ResponseEntity<Task> updateTask(@PathVariable(value = "id") Long id,
 			@Valid @RequestBody Task ti) throws ResourceNotFoundException {
 		Task t = taskRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + id));
