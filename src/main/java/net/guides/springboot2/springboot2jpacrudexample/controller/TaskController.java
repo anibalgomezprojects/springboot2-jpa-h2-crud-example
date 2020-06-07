@@ -42,6 +42,10 @@ public class TaskController {
 		Task t = taskRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + id));
 
+		if (ti.getDescription().equals("")) {
+			new ResourceNotFoundException("Required description for task ");
+		}
+		
 		t.setId(ti.getId());
 		t.setDescription(ti.getDescription());
 		t.setStatus(ti.getStatus());
