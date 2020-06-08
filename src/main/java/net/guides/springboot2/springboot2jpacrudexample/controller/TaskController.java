@@ -27,13 +27,15 @@ public class TaskController {
 	private TaskRepository taskRepository;
 
 	@GetMapping("/")
-	public List<Task> getAllTask() {
-		return taskRepository.findAll();
+	public ResponseEntity<Object> getAllTask() {
+		List<Task> tsk = taskRepository.findAll();
+		return ResponseEntity.ok(tsk);
 	}
 
 	@PostMapping("/")
-	public Task createTask(@Valid @RequestBody Task t) {
-		return taskRepository.save(t);
+	public ResponseEntity<Object> createTask(@Valid @RequestBody Task t) {
+		Task tsk = taskRepository.save(t);
+		return ResponseEntity.ok(tsk);
 	}
 
 	@PutMapping("/{id}")

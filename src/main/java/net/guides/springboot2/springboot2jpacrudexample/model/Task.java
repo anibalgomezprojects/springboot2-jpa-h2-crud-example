@@ -11,6 +11,8 @@ import javax.persistence.Table;
 @Table(name = "tasks")
 public class Task {
 
+	@Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String description;
 	private int status;
@@ -24,8 +26,6 @@ public class Task {
 		this.status = status;
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
